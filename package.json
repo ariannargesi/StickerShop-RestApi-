@@ -1,0 +1,7 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "backend of my flerbo clone",
+  "main": "index.js",
+  "license": "MIT"
+}
