@@ -12,7 +12,7 @@
         <h1>Add</h1>
         <div class="box">
             <form action="/add" method="POST">
-                <input type="text" name="name" placeholder="name" required>
+                <input type="text" name="title" placeholder="name" required>
                 <input type="text" name="category" placeholder="category" id="" rq>
                 <input type="text" name="price" placeholder="price">
                 <input type="text" name="type" placeholder="type">
@@ -29,7 +29,7 @@
             <div class="remove-iteme">
                 <% for(product in products) { %>
                     <div>
-                        <%=products[product].name%> <a href="/remove/?name=<%= products[product].name%>" >remove</a>
+                        <%=products[product].title%> <a href="/remove/?title=<%= products[product].title%>" >remove</a>
                     </div>
                 <%}%>
             </div>

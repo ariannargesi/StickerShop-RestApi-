@@ -29,9 +29,8 @@ app.get('/remove',(req, res) => {
 })
 //add product route
 app.post('/add', (req, res) => {
-  const newProduct = { name, description, category, price, type, img1, img2, size } = req.body
   const newProduct = {
-    title: req.body.name ,
+    title: req.body.title ,
     description: req.body.description,
     category: req.body.category,
     price: req.body.price,
@@ -42,8 +41,7 @@ app.post('/add', (req, res) => {
     type: [
       req.body.type
     ],
-    size: req.body.size 
-
+    size: req.body.size
   }
   const add = new productModel(newProduct)
   add.save(( err,result ) => {
