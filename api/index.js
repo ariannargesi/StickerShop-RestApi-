@@ -9,12 +9,23 @@ app.get('/api/product/:id', async (req, res) => {
     const id = Number(req.params.id)
     if(id){
         const product = await productSchema.findOne().skip(id)
-        res.send(product)
+        if(product) {
+          res.send({
+            status: 200,
+            product
+          })
+        }
+        else {
+          res.send ({
+            status: 404,
+            message: "product not found"
+          })
+        }
     }
     else
         res.send({
             status: 400,
-             developerError: "you should only put id as a number in request url"
+             message: "you should only put id as a number in request url"
         })
 })
 
@@ -23,7 +34,19 @@ app.get('/api/products-list', async (req, res) => {
     const to = Number(req.query.to)
     if(from && to) {
         const products = await productSchema.find().skip(from).limit(to)
-        res.send(products)
+        if(products){
+          res.send({
+            status: 200,
+            products
+          })
+        }
+        else {
+          res.send({
+            status: 400,
+            message: "bad request. please refer to docs"
+          })
+        }
+
     }
     if(Object.keys(req.query).length === 0) {
         const products = await productSchema.find()
