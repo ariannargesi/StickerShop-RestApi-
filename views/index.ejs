@@ -27,8 +27,11 @@
         <div class="box">
             <h1>remove</h1>
             <div class="remove-iteme">
-                name: item
-                <a href="#">remove</a>
+                <% for(product in products) { %>
+                    <div>
+                        <%=products[product].name%> <a href="/remove/?name=<%= products[product].name%>" >remove</a>
+                    </div>
+                <%}%>
             </div>
         </div>
     </div>
