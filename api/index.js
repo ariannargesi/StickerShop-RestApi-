@@ -42,13 +42,13 @@ app.get('/api/products-list', async (req, res) => {
         }
         else {
           res.send({
-            status: 400,
-            message: "bad request. please refer to docs"
+            status: 404,
+            message: "rate is not valid"
           })
         }
 
     }
-    if(Object.keys(req.query).length === 0) {
+  else if (Object.keys(req.query).length === 0) {
         const products = await productSchema.find()
         res.send(products)
     }
