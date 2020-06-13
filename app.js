@@ -29,6 +29,7 @@ app.get('/remove',(req, res) => {
 })
 //add product route
 app.post('/add', (req, res) => {
+  console.log(req.body.description)
   const newProduct = {
     title: req.body.title ,
     description: req.body.description,
@@ -43,6 +44,7 @@ app.post('/add', (req, res) => {
     ],
     size: req.body.size
   }
+  console.log(newProduct.description)
   const add = new productModel(newProduct)
   add.save(( err,result ) => {
     console.log('product added')
