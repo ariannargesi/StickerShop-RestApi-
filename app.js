@@ -11,7 +11,7 @@ const login = require('./routes/login')
 
 // mongodb connection
 const mongoose = require('mongoose')
-mongoose.connect('mongodb+srv://admin:<password>@flerbo-sv8cb.mongodb.net/<flerbo>?retryWrites=true&w=majority',{useNewUrlParser: true, useUnifiedTopology: true},(er,result) => {
+mongoose.connect('mongodb+srv://admin:<09368069820>@flerbo-sv8cb.mongodb.net/<flerbo>?retryWrites=true&w=majority',{useNewUrlParser: true, useUnifiedTopology: true},(er,result) => {
 })
 
 
