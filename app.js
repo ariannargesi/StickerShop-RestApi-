@@ -11,7 +11,7 @@ const login = require('./routes/login')
 
 // mongodb connection
 const mongoose = require('mongoose')
-mongoose.connect('admin:09368069820@flerbo-sv8cb.mongodb.net/<flerbo>?retryWrites=true&w=majority',{useNewUrlParser: true, useUnifiedTopology: true},(er,result) => {
+mongoose.connect('mongodb+srv://admin:09368069820@flerbo-sv8cb.mongodb.net/<dbname>?retryWrites=true&w=majority',{useNewUrlParser: true, useUnifiedTopology: true},(er,result) => {
 })
 
 
@@ -77,12 +77,7 @@ let port = process.env.PORT;
 if (port == null || port == "") {
   port = 8000;
 }
-app.listen(port, ()=>{
-  const admin = new adminModel({
-    username: "admin",
-    password: "09368069820"
-  })
-  console.log("waht?>")
-  admin.save().then(() => console.log("saved")).catch(()=> console.log("err"))
-});
+app.listen(port, async ()=>{
+  console.log("is running")
+ });
 
