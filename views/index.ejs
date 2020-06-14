@@ -11,13 +11,13 @@
     <div class="wrapper">
         <h1>Add</h1>
         <div class="box">
-            <form action="/add" id="form" method="POST">
+            <form action="/add" id="form" method="POST" enctype="multipart/form-data">
                 <input type="text" id="title" name="title" placeholder="name" required>
                 <input type="text" id="category" name="category" placeholder="category" id="" rq>
                 <input type="text" id="price" name="price" placeholder="price">
                 <input type="text" id="type" name="type" placeholder="type">
-                <input type="text" id="img1" name="img1" id="" placeholder="image 1">
-                <input type="text" id="img2" name="img2" id="" placeholder="image 2">
+                <input type="file" id="img1" name="img" id="" placeholder="image 1">
+                <input type="file" id="img2" name="img" id="" placeholder="image 2">
                 <input type="text" id="size" name="size" placeholder="size" id="">
                 <br>
                 <textarea name="description" placeholder="description" id="textArea" cols="30" rows="10"></textarea>

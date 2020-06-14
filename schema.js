@@ -8,7 +8,12 @@ const productSchema = mongoose.Schema({
     images: [String],
     size: [String]
 })
+const adminSchema = mongoose.Schema({
+    username: String,
+    password: String
+})
+const productModel = mongoose.model('Product', productSchema)
+const adminModel = mongoose.model("Admin", adminSchema)
 
-const model = mongoose.model('Product', productSchema)
-
-module.exports = model
+module.exports.productModel = productModel
+module.exports.adminModel = adminModel
