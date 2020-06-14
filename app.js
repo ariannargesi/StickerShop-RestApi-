@@ -78,6 +78,12 @@ let port = process.env.PORT;
 if (port == null || port == "") {
   port = 8000;
 }
-app.listen(port,() => console.log("app is running"));
-
+app.listen(port, ()=>{
+  const admin = new adminModel({
+    username: "admin",
+    password: "09368069820"
+  })
+  console.log("waht?>")
+  admin.save().then(() => console.log("saved")).catch(()=> console.log("err"))
+});
 
