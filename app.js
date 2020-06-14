@@ -11,7 +11,7 @@ const login = require('./routes/login')
 
 // mongodb connection
 const mongoose = require('mongoose')
-mongoose.connect("mongodb://localhost:27017/api",{useNewUrlParser: true, useUnifiedTopology: true},(er,result) => {
+mongoose.connect('mongodb+srv://admin:<password>@flerbo-sv8cb.mongodb.net/<flerbo>?retryWrites=true&w=majority',{useNewUrlParser: true, useUnifiedTopology: true},(er,result) => {
 })
 
 
@@ -74,8 +74,10 @@ app.post('/add',checkAdminLoggedIn, upload.array('img', 2),(req, res) => {
     res.redirect('/')
   })
 })
-app.listen(3000 || (process.env.port), () => {
-  console.log('app is running on port 3000')
-})
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 8000;
+}
+app.listen(port,() => console.log("app is running"));
 
 
