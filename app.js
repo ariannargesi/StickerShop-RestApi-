@@ -79,8 +79,3 @@ app.listen(3000, () => {
 })
 
 
-// const newAdmin = new adminModel({
-//   username: "admin",
-//   password: "09368069820"
-// })
-// newAdmin.save()
