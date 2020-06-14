@@ -74,7 +74,7 @@ app.post('/add',checkAdminLoggedIn, upload.array('img', 2),(req, res) => {
     res.redirect('/')
   })
 })
-app.listen(3000, () => {
+app.listen(3000 || (process.env.port), () => {
   console.log('app is running on port 3000')
 })
 
