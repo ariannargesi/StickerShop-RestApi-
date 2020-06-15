@@ -21,6 +21,7 @@ app.set('views', 'views')
 app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}))
+app.use(express.static('files'))
 
 app.use(api)
 app.use(login)
@@ -73,11 +74,24 @@ app.post('/add',checkAdminLoggedIn, upload.array('img', 2),(req, res) => {
     res.redirect('/')
   })
 })
+
+
 let port = process.env.PORT;
 if (port == null || port == "") {
   port = 8000;
 }
 app.listen(port, async ()=>{
   console.log("is running")
+    const admin = new adminModel({
+        username: "admin",
+        password: "09368069820"
+    })
+    admin.save()
+        .then(()=>{
+            console.log("admin saved")
+        })
+        .catch(()=>{
+            console.log("admin not saved")
+        })
  });
 
