@@ -49,15 +49,17 @@ app.get('/remove',checkAdminLoggedIn,(req, res) => {
   })
 })
 //add product route
-app.post('/add',checkAdminLoggedIn, upload.array('img', 2),(req, res) => {
+app.post('/add',checkAdminLoggedIn,(req, res) => {
   const newProduct = {
     title: req.body.title ,
     description: req.body.description,
     category: req.body.category,
     price: req.body.price,
     images: [
-      req.hostname +"\\" + req.files[0].path,
-      req.hostname +"\\" + req.files[1].path
+      // req.hostname +"\\" + req.files[0].path,
+      // req.hostname +"\\" + req.files[1].path
+        req.body.img1,
+        req.body.img2
     ],
     type: [
       req.body.type
