@@ -1,6 +1,6 @@
 const express = require('express')
 const cors = require('cors')
-const productSchema = require('../schema')
+const productSchema = require('../schema').productModel
 const app = express()
 
 app.use(cors())
