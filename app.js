@@ -21,7 +21,7 @@ app.set('views', 'views')
 app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}))
-app.use(express.static('files'))
+app.use("/upload-images", express.static('files'))
 
 app.use(api)
 app.use(login)
@@ -56,8 +56,8 @@ app.post('/add',checkAdminLoggedIn, upload.array('img', 2),(req, res) => {
     category: req.body.category,
     price: req.body.price,
     images: [
-      req.files[0].path,
-      req.files[1].path
+      req.hostname +"\\" + req.files[0].path,
+      req.hostname +"\\" + req.files[1].path
     ],
     type: [
       req.body.type
@@ -82,16 +82,5 @@ if (port == null || port == "") {
 }
 app.listen(port, async ()=>{
   console.log("is running")
-    const admin = new adminModel({
-        username: "admin",
-        password: "09368069820"
-    })
-    admin.save()
-        .then(()=>{
-            console.log("admin saved")
-        })
-        .catch(()=>{
-            console.log("admin not saved")
-        })
  });
 
