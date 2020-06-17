@@ -54,4 +54,15 @@ app.get('/api/products-list', async (req, res) => {
     }
 })
 
+app.get('/api/:category',(req, res) => {
+  const category = req.params.category 
+  const page = req.query.page -1 
+  const limit = 16 
+  productSchema.find({category}).skip(page * limit).limit(limit).then(result =>{
+    res.send(result)
+  })
+  .catch(err => {
+    res.send("page value must be non-negative")
+  })
+})
 module.exports = app
