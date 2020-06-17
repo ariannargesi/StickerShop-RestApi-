@@ -62,7 +62,7 @@ app.get('/api/:category',(req, res) => {
     if(result) {
       res.send({
         status: "200",
-        data: result  
+        products: result   
       })
     }
     else {
