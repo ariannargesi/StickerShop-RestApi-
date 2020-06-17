@@ -58,7 +58,8 @@ app.get('/api/:category', async(req, res) => {
   const category = req.params.category 
   let page = (req.query.page || 1) -1 
   const limit = 16 
-  const pagesNumber =Math.ceil (await productSchema.find({category}).length / 16) 
+  let pagesNumber = await (await productSchema.find({category})).length / 16
+  pagesNumber = Math.ceil(pagesNumber)
   productSchema.find({category}).skip(page * limit).limit(limit).then(result =>{
     if(result) {
       res.send({
