@@ -54,15 +54,17 @@ app.get('/api/products-list', async (req, res) => {
     }
 })
 
-app.get('/api/:category',(req, res) => {
+app.get('/api/:category', async(req, res) => {
   const category = req.params.category 
   let page = (req.query.page || 1) -1 
   const limit = 16 
+  const pagesNumber =Math.ceil (await productSchema.find({category}).length / 16) 
   productSchema.find({category}).skip(page * limit).limit(limit).then(result =>{
     if(result) {
       res.send({
         status: "200",
-        products: result   
+        products: result,
+        pagesNumber    
       })
     }
     else {
