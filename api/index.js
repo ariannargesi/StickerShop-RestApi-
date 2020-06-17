@@ -56,10 +56,21 @@ app.get('/api/products-list', async (req, res) => {
 
 app.get('/api/:category',(req, res) => {
   const category = req.params.category 
-  const page = req.query.page -1 
+  let page = (req.query.page || 1) -1 
   const limit = 16 
   productSchema.find({category}).skip(page * limit).limit(limit).then(result =>{
-    res.send(result)
+    if(result) {
+      res.send({
+        status: "200",
+        data: result  
+      })
+    }
+    else {
+      res.send({
+        status: "400",
+        message: "bad request"
+      })
+    }
   })
   .catch(err => {
     res.send("page value must be non-negative")
